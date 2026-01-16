@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Theme version
  */
-define( 'AI_PREMIUM_THEME_VERSION', '1.0.2' );
+define( 'AI_PREMIUM_THEME_VERSION', '1.0.3' );
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -327,6 +327,21 @@ require get_template_directory() . '/inc/customizer.php';
  * Enqueue scripts additions.
  */
 require get_template_directory() . '/inc/enqueue-scripts.php';
+
+/**
+ * Custom Post Types.
+ */
+require get_template_directory() . '/inc/custom-post-types.php';
+
+/**
+ * Demo Content Importer.
+ */
+require get_template_directory() . '/inc/demo-importer.php';
+
+/**
+ * Plugin Compatibility.
+ */
+require get_template_directory() . '/inc/plugin-compatibility.php';
 
 /**
  * SEO enhancements.
