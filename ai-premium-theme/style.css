@@ -609,6 +609,30 @@ figcaption {
 }
 
 /*--------------------------------------------------------------
+Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.breadcrumbs a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs .current {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/*--------------------------------------------------------------
 Responsive Design
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {

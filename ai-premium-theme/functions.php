@@ -327,3 +327,15 @@ require get_template_directory() . '/inc/customizer.php';
  * Enqueue scripts additions.
  */
 require get_template_directory() . '/inc/enqueue-scripts.php';
+
+/**
+ * SEO enhancements.
+ */
+require get_template_directory() . '/inc/seo-enhancements.php';
+
+/**
+ * WooCommerce compatibility.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
