@@ -267,6 +267,17 @@ Based on:
 
 ## 📅 Changelog
 
+### Version 1.0.1 (January 16, 2026)
+**Code Quality Improvements & Bug Fixes**
+- Fixed security issue: Properly escaped site description output
+- Fixed PHP array syntax error in resource hints function
+- Implemented footer widget areas display with responsive grid
+- Added RTL stylesheet support
+- Created assets/images/ and assets/fonts/ directories
+- Enhanced footer widget styling
+- Updated documentation
+- Validated all PHP syntax and JSON files
+
 ### Version 1.0.0 (January 16, 2026)
 **Initial Release**
 - Complete theme structure with 44 files

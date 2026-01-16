@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Theme version
  */
-define( 'AI_PREMIUM_THEME_VERSION', '1.0.0' );
+define( 'AI_PREMIUM_THEME_VERSION', '1.0.1' );
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
