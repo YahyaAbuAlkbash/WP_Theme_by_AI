@@ -14,10 +14,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function ai_premium_theme_add_open_graph_tags() {
 	if ( is_singular() ) {
-		global $post;
+		$post = get_post();
+		
+		if ( ! $post ) {
+			return;
+		}
 		
 		// Open Graph Title
-		$og_title = get_the_title();
+		$og_title = get_the_title( $post->ID );
 		echo '<meta property="og:title" content="' . esc_attr( $og_title ) . '" />' . "\n";
 		
 		// Open Graph Type
@@ -57,13 +61,17 @@ add_action( 'wp_head', 'ai_premium_theme_add_open_graph_tags', 5 );
  */
 function ai_premium_theme_add_twitter_card_tags() {
 	if ( is_singular() ) {
-		global $post;
+		$post = get_post();
+		
+		if ( ! $post ) {
+			return;
+		}
 		
 		// Twitter Card Type
 		echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
 		
 		// Twitter Title
-		echo '<meta name="twitter:title" content="' . esc_attr( get_the_title() ) . '" />' . "\n";
+		echo '<meta name="twitter:title" content="' . esc_attr( get_the_title( $post->ID ) ) . '" />' . "\n";
 		
 		// Twitter Description
 		if ( ! empty( $post->post_excerpt ) ) {
@@ -87,17 +95,21 @@ add_action( 'wp_head', 'ai_premium_theme_add_twitter_card_tags', 5 );
  */
 function ai_premium_theme_add_schema_markup() {
 	if ( is_single() ) {
-		global $post;
+		$post = get_post();
+		
+		if ( ! $post ) {
+			return;
+		}
 		
 		$schema = array(
 			'@context'      => 'https://schema.org',
 			'@type'         => 'Article',
-			'headline'      => get_the_title(),
-			'datePublished' => get_the_date( 'c' ),
-			'dateModified'  => get_the_modified_date( 'c' ),
+			'headline'      => get_the_title( $post->ID ),
+			'datePublished' => get_the_date( 'c', $post->ID ),
+			'dateModified'  => get_the_modified_date( 'c', $post->ID ),
 			'author'        => array(
 				'@type' => 'Person',
-				'name'  => get_the_author(),
+				'name'  => get_the_author_meta( 'display_name', $post->post_author ),
 			),
 		);
 		
@@ -164,11 +176,12 @@ function ai_premium_theme_breadcrumbs() {
 		$cat = get_queried_object();
 		if ( $cat->parent != 0 ) {
 			$parent_cat = get_category( $cat->parent );
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_category_parents() escapes output internally
 			echo get_category_parents( $parent_cat, true, $delimiter );
 		}
-		echo $before . single_cat_title( '', false ) . $after;
+		echo $before . esc_html( single_cat_title( '', false ) ) . $after;
 	} elseif ( is_search() ) {
-		echo $before . esc_html__( 'Search results for', 'ai-premium-theme' ) . ' "' . get_search_query() . '"' . $after;
+		echo $before . esc_html__( 'Search results for', 'ai-premium-theme' ) . ' "' . esc_html( get_search_query() ) . '"' . $after;
 	} elseif ( is_day() ) {
 		echo '<a href="' . esc_url( get_year_link( get_the_time( 'Y' ) ) ) . '">' . get_the_time( 'Y' ) . '</a>' . $delimiter;
 		echo '<a href="' . esc_url( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ) ) . '">' . get_the_time( 'F' ) . '</a>' . $delimiter;
@@ -183,14 +196,15 @@ function ai_premium_theme_breadcrumbs() {
 			$post_type = get_post_type_object( get_post_type() );
 			$slug      = $post_type->rewrite;
 			echo '<a href="' . esc_url( $home_link . '/' . $slug['slug'] . '/' ) . '">' . esc_html( $post_type->labels->singular_name ) . '</a>' . $delimiter;
-			echo $before . get_the_title() . $after;
+			echo $before . esc_html( get_the_title() ) . $after;
 		} else {
 			$cat = get_the_category();
 			if ( ! empty( $cat ) ) {
 				$cat = $cat[0];
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_category_parents() escapes output internally
 				echo get_category_parents( $cat, true, $delimiter );
 			}
-			echo $before . get_the_title() . $after;
+			echo $before . esc_html( get_the_title() ) . $after;
 		}
 	} elseif ( ! is_single() && ! is_page() && get_post_type() != 'post' && ! is_404() ) {
 		$post_type = get_post_type_object( get_post_type() );
@@ -198,31 +212,44 @@ function ai_premium_theme_breadcrumbs() {
 			echo $before . esc_html( $post_type->labels->singular_name ) . $after;
 		}
 	} elseif ( is_attachment() ) {
-		$parent = get_post( $post->post_parent );
-		$cat    = get_the_category( $parent->ID );
-		if ( ! empty( $cat ) ) {
-			$cat = $cat[0];
-			echo get_category_parents( $cat, true, $delimiter );
+		$post = get_post();
+		if ( $post && $post->post_parent ) {
+			$parent = get_post( $post->post_parent );
+			if ( $parent ) {
+				$cat = get_the_category( $parent->ID );
+				if ( ! empty( $cat ) ) {
+					$cat = $cat[0];
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_category_parents() escapes output internally
+					echo get_category_parents( $cat, true, $delimiter );
+				}
+				echo '<a href="' . esc_url( get_permalink( $parent ) ) . '">' . esc_html( $parent->post_title ) . '</a>' . $delimiter;
+			}
 		}
-		echo '<a href="' . esc_url( get_permalink( $parent ) ) . '">' . esc_html( $parent->post_title ) . '</a>' . $delimiter;
-		echo $before . get_the_title() . $after;
-	} elseif ( is_page() && ! $post->post_parent ) {
-		echo $before . get_the_title() . $after;
-	} elseif ( is_page() && $post->post_parent ) {
-		$parent_id   = $post->post_parent;
-		$breadcrumbs = array();
-		while ( $parent_id ) {
-			$page          = get_post( $parent_id );
-			$breadcrumbs[] = '<a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . get_the_title( $page->ID ) . '</a>';
-			$parent_id     = $page->post_parent;
+		echo $before . esc_html( get_the_title() ) . $after;
+	} elseif ( is_page() ) {
+		$post = get_post();
+		if ( ! $post ) {
+			return;
 		}
-		$breadcrumbs = array_reverse( $breadcrumbs );
-		foreach ( $breadcrumbs as $crumb ) {
-			echo $crumb . $delimiter;
+		if ( ! $post->post_parent ) {
+			echo $before . esc_html( get_the_title() ) . $after;
+		} else {
+			$parent_id   = $post->post_parent;
+			$breadcrumbs = array();
+			while ( $parent_id ) {
+				$page          = get_post( $parent_id );
+				$breadcrumbs[] = '<a href="' . esc_url( get_permalink( $page->ID ) ) . '">' . esc_html( get_the_title( $page->ID ) ) . '</a>';
+				$parent_id     = $page->post_parent;
+			}
+			$breadcrumbs = array_reverse( $breadcrumbs );
+			foreach ( $breadcrumbs as $crumb ) {
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped above
+				echo $crumb . $delimiter;
+			}
+			echo $before . esc_html( get_the_title() ) . $after;
 		}
-		echo $before . get_the_title() . $after;
 	} elseif ( is_tag() ) {
-		echo $before . esc_html__( 'Tag', 'ai-premium-theme' ) . ' "' . single_tag_title( '', false ) . '"' . $after;
+		echo $before . esc_html__( 'Tag', 'ai-premium-theme' ) . ' "' . esc_html( single_tag_title( '', false ) ) . '"' . $after;
 	} elseif ( is_author() ) {
 		$author = get_queried_object();
 		echo $before . esc_html__( 'Author', 'ai-premium-theme' ) . ' "' . esc_html( $author->display_name ) . '"' . $after;
@@ -231,7 +258,7 @@ function ai_premium_theme_breadcrumbs() {
 	}
 	
 	if ( get_query_var( 'paged' ) ) {
-		echo ' (' . esc_html__( 'Page', 'ai-premium-theme' ) . ' ' . get_query_var( 'paged' ) . ')';
+		echo ' (' . esc_html__( 'Page', 'ai-premium-theme' ) . ' ' . absint( get_query_var( 'paged' ) ) . ')';
 	}
 	
 	echo '</nav>';

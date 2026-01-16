@@ -52,7 +52,7 @@ function ai_premium_theme_woocommerce_cart_link() {
 	?>
 	<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'ai-premium-theme' ); ?>">
 		<span class="cart-icon">🛒</span>
-		<span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+		<span class="cart-count"><?php echo absint( WC()->cart->get_cart_contents_count() ); ?></span>
 	</a>
 	<?php
 }
