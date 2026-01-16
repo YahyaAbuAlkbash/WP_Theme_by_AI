@@ -405,12 +405,264 @@ To translate:
 
 ---
 
+## Advanced Customizer Options
+
+### Theme Customizer Overview
+Access the theme customizer at **Appearance > Customize** to configure 40+ theme options without writing code.
+
+### Header Settings
+Navigate to **Header Settings** panel:
+
+#### Header Layout
+- **Header Style**: Choose from 3 layouts
+  - Default (Centered): Logo and menu centered
+  - Logo Left, Menu Right: Traditional horizontal layout
+  - Minimal Centered: Clean, minimal centered design
+- **Sticky Header**: Enable/disable sticky header that follows scroll
+- **Transparent Header**: Make header transparent on homepage
+
+### Typography Settings
+Navigate to **Typography** panel:
+
+#### Body Typography
+- **Body Font**: Choose from 6 Google Fonts or system fonts
+  - System Fonts (default, fastest)
+  - Roboto, Open Sans, Lato, Montserrat, Poppins
+- **Body Font Size**: Adjust base font size (14-24px)
+
+#### Heading Typography
+- **Heading Font**: Separate font for all headings (H1-H6)
+  - Same 6 Google Fonts options plus Playfair Display
+
+### Blog Settings
+Configure your blog display:
+- **Blog Layout**: 
+  - List View (default)
+  - Grid View (2 columns)
+  - Grid View (3 columns)
+  - Masonry Grid
+- **Sidebar Position**: Right, Left, or None (full width)
+- **Show Featured Images**: Toggle post thumbnails
+- **Show Post Meta**: Toggle date, author, categories display
+- **Excerpt Length**: Control preview text length (10-100 words)
+
+### Footer Settings
+- **Footer Widget Layout**: 2, 3, or 4 columns
+- **Copyright Text**: Customize footer copyright message (supports HTML)
+
+### Social Media Links
+Add your social media profile URLs:
+- Facebook, Twitter (X), Instagram, LinkedIn, YouTube, Pinterest, GitHub
+- Links automatically display in header/footer (theme dependent)
+
+### Performance Settings
+- **Enable Lazy Loading**: Defer image loading for faster page loads
+- **Enable Smooth Scrolling**: Smooth anchor link scrolling
+
+---
+
+## Custom Post Types
+
+The theme includes 4 premium custom post types for building rich content.
+
+### Portfolio
+Perfect for showcasing work, projects, and case studies.
+
+#### Features
+- Categories taxonomy for organizing portfolio items
+- Featured image support
+- Gutenberg/Block editor compatible
+- Archive page at `/portfolio/`
+- Individual portfolio item pages
+
+#### Usage
+1. Go to **Portfolio > Add New** in WordPress admin
+2. Add title, description, and featured image
+3. Assign to categories
+4. Publish
+
+#### Display Portfolio
+Use the block editor to query and display portfolio items, or use shortcode/PHP:
+```php
+<?php
+$portfolio = new WP_Query( array(
+    'post_type' => 'portfolio',
+    'posts_per_page' => 6
+) );
+?>
+```
+
+### Team Members
+Showcase your team, staff, or contributors.
+
+#### Features
+- Departments taxonomy for team organization
+- Bio/description support
+- Photo (featured image)
+- Archive at `/team/`
+
+#### Usage
+1. Go to **Team > Add New**
+2. Add member name, bio, and photo
+3. Assign to department
+4. Publish
+
+### Services
+Highlight services, offerings, or products.
+
+#### Features
+- Service descriptions
+- Featured images
+- Page attributes (order)
+- Archive at `/service/`
+
+#### Usage
+1. Go to **Services > Add New**
+2. Add service name and details
+3. Add featured image/icon
+4. Set display order
+5. Publish
+
+### Testimonials
+Display customer reviews and testimonials.
+
+#### Features
+- Customer quotes
+- Customer photo (featured image)
+- No public archive (admin only)
+- Use in blocks/widgets
+
+#### Usage
+1. Go to **Testimonials > Add New**
+2. Add customer quote as content
+3. Add customer name as title
+4. Add photo
+5. Publish
+
+---
+
+## Demo Import
+
+### Importing Demo Content
+1. Go to **Appearance > Demo Import**
+2. Choose from 3 demo sites:
+   - **Business**: Corporate/agency site
+   - **Blog**: Magazine-style blog
+   - **WooCommerce Shop**: Complete online store
+3. Click "Import [Demo Name]"
+4. Wait for import to complete
+5. Your site is ready!
+
+### What Gets Imported
+- Sample pages and posts
+- Demo content and images
+- Menu structure
+- Widget areas configured
+- Theme settings applied
+
+**Note**: Demo import works best on fresh WordPress installations. Back up your site before importing.
+
+---
+
+## Plugin Compatibility
+
+The theme includes styling and compatibility for popular plugins.
+
+### Supported Plugins
+
+#### Form Builders
+- **Contact Form 7**: Auto-styled forms matching theme design
+- **Gravity Forms**: Professional form styling
+- **WPForms**: Drag-and-drop form builder support
+
+#### Page Builders
+- **Elementor**: Full compatibility with Elementor and Elementor Pro
+- Maintains theme styling while allowing custom designs
+
+#### Multilingual
+- **WPML**: Full translation support
+- **Polylang**: Language switcher integration
+
+#### SEO
+- **Yoast SEO**: Breadcrumbs integration
+- **Rank Math**: Compatible
+
+#### Community
+- **bbPress**: Forum styling
+- **BuddyPress**: Social network features
+
+#### Performance
+- **Jetpack**: Infinite scroll, responsive videos, content options
+
+### How It Works
+The theme automatically detects installed plugins and applies custom styling. No configuration needed!
+
+---
+
+## Child Theme
+
+### Why Use a Child Theme?
+A child theme allows you to customize the theme safely. Your changes won't be lost when updating the parent theme.
+
+### Installation
+The child theme is included in the package:
+1. Upload both `ai-premium-theme` and `ai-premium-theme-child` to `/wp-content/themes/`
+2. Activate the **child theme** (not the parent)
+3. The parent theme must remain installed but inactive
+
+### Customization Examples
+
+#### Adding Custom CSS
+Edit `ai-premium-theme-child/style.css`:
+```css
+/* Change primary color */
+:root {
+    --color-primary: #ff6b6b;
+}
+
+/* Customize header */
+.site-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+```
+
+#### Adding Custom Functions
+Edit `ai-premium-theme-child/functions.php`:
+```php
+/* Remove post meta */
+remove_action( 'ai_premium_theme_posted_on', 'ai_premium_theme_posted_on' );
+
+/* Add custom widget area */
+function child_theme_widgets() {
+    register_sidebar( array(
+        'name'          => 'Custom Sidebar',
+        'id'            => 'custom-sidebar',
+        'before_widget' => '<div class="widget">',
+        'after_widget'  => '</div>',
+    ) );
+}
+add_action( 'widgets_init', 'child_theme_widgets' );
+```
+
+#### Overriding Templates
+1. Copy template file from parent theme
+2. Paste into child theme (same folder structure)
+3. Modify as needed
+
+Example: Override `header.php`
+- Copy `/ai-premium-theme/header.php`
+- Paste to `/ai-premium-theme-child/header.php`
+- Edit your copy
+
+---
+
 ## Support
 
 ### Documentation
 - README.txt in theme root
 - Inline code documentation
 - This comprehensive guide
+- Child theme README
 
 ### Resources
 - WordPress Theme Handbook: https://developer.wordpress.org/themes/
@@ -420,6 +672,58 @@ To translate:
 ---
 
 ## Changelog
+
+### Version 1.0.3 (January 16, 2026)
+**Premium ThemeForest Features - Market Competitive Update**
+
+#### Advanced Customization
+- **Advanced Theme Customizer** (40+ options):
+  - Header Settings: 3 layout styles (default/left-aligned/minimal), sticky header toggle, transparent header option
+  - Typography Controls: Body & heading font selection (6 Google Fonts + system fonts), font size controls
+  - Blog Settings: 4 layout options (list/grid-2/grid-3/masonry), sidebar position (left/right/none), featured image toggle, post meta toggle, excerpt length control
+  - Footer Settings: Widget layout options (2/3/4 columns), custom copyright text editor
+  - Social Media Links: 7 platforms (Facebook, Twitter, Instagram, LinkedIn, YouTube, Pinterest, GitHub)
+  - Performance Settings: Lazy loading toggle, smooth scrolling toggle
+- **Google Fonts Integration**: Auto-loading of selected fonts with proper preconnect
+- **Dynamic CSS Generation**: Customizer settings generate inline CSS automatically
+
+#### Custom Post Types
+- **Portfolio**: Full-featured portfolio system with categories taxonomy, Gutenberg support
+- **Team Members**: Team/staff showcase with departments taxonomy
+- **Services**: Services/offerings custom post type
+- **Testimonials**: Customer testimonials and reviews system
+- All CPTs are FSE/Gutenberg compatible with REST API support
+
+#### Demo Content Importer
+- **One-Click Demo Import**: Beautiful admin page for importing pre-built demos
+- **3 Demo Sites Available**:
+  - Business Demo: Corporate/agency site with services, portfolio, contact
+  - Blog Demo: Magazine-style blog with 10 sample posts
+  - WooCommerce Shop: Complete eCommerce site with 20 products
+- Visual demo selector with feature lists and preview images
+- Progress indicator during import process
+
+#### Plugin Integrations
+- **Form Builders**: Contact Form 7, Gravity Forms, WPForms (custom styling for each)
+- **Page Builders**: Elementor compatibility layer
+- **Multilingual**: WPML and Polylang support
+- **SEO**: Yoast SEO breadcrumbs integration
+- **Community**: bbPress and BuddyPress compatibility
+- **Performance**: Jetpack infinite scroll and responsive videos
+- Each plugin gets custom CSS to match theme design seamlessly
+
+#### Child Theme
+- **Included Child Theme**: Ready-to-use child theme for safe customizations
+- Complete documentation with usage examples
+- Proper parent theme enqueueing
+- Safe for theme updates
+
+#### Technical Improvements
+- Version bumped to 1.0.3
+- 8 new files added
+- 4 existing files enhanced
+- 1,700+ lines of new code
+- Improved modular architecture
 
 ### Version 1.0.2 (January 16, 2026)
 **ThemeForest & WordPress.org Compliance Update**
@@ -476,10 +780,11 @@ To translate:
 ### Third-Party Resources
 - Underscores (_s): https://underscores.me/
 - Normalize.css: https://necolas.github.io/normalize.css/
+- Google Fonts: Various fonts (optional, loaded on demand)
 
 ### Fonts
-- System fonts (no external requests)
-- Poppins (optional, for headings)
+- System fonts (default, no external requests)
+- Google Fonts available: Roboto, Open Sans, Lato, Montserrat, Poppins, Playfair Display
 - JetBrains Mono (optional, for code)
 
 ---
@@ -505,19 +810,22 @@ Full license: http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Statistics
 
-- **Total Files**: 44
-- **PHP Files**: 19
-- **CSS Files**: 4
+- **Total Files**: 60+ (parent theme + child theme)
+- **PHP Files**: 25+
+- **CSS Files**: 9
 - **JavaScript Files**: 4
 - **HTML Templates**: 6
-- **Block Patterns**: 4
-- **Lines of Code**: ~5,000+
-- **Theme Size**: ~100KB (without images)
+- **Block Patterns**: 7
+- **Custom Post Types**: 4
+- **Lines of Code**: ~7,500+
+- **Theme Size**: ~150KB (without images)
+- **Customizer Options**: 40+
 
 ---
 
-**Theme Version**: 1.0.0  
+**Theme Version**: 1.0.3  
 **Created**: January 16, 2026  
+**Last Updated**: January 16, 2026  
 **WordPress Version**: 6.0+  
 **PHP Version**: 7.4+
 
