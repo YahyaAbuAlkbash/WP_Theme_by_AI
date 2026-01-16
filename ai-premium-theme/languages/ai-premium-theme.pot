@@ -1,0 +1,25 @@
+# Copyright (C) 2026 AI Development Team
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: AI Premium Theme 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/YahyaAbuAlkbash/WP_Theme_by_AI\n"
+"POT-Creation-Date: 2026-01-16 00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: Theme Name
+msgid "AI Premium Theme"
+msgstr ""
+
+#: Theme Description
+msgid "A modern, highly optimized WordPress theme built with best practices for 2026. Features include Full Site Editing support, block editor integration, responsive design, accessibility compliance, dark mode, and exceptional performance."
+msgstr ""
+
+#: Theme Author
+msgid "AI Development Team"
+msgstr ""
