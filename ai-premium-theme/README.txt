@@ -5,7 +5,7 @@ Tags: blog, one-column, two-columns, right-sidebar, left-sidebar, custom-colors,
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,17 @@ Yes! The theme follows WCAG 2.1 AA accessibility guidelines with proper semantic
 Absolutely! AI Premium Theme is perfect for blogs, portfolios, business sites, and more.
 
 == Changelog ==
+
+= 1.0.1 - January 16, 2026 =
+* Security Fix: Properly escaped site description output in header.php
+* Bug Fix: Corrected PHP array syntax error in resource hints function
+* Enhancement: Implemented footer widget areas display with responsive grid
+* Enhancement: Added RTL stylesheet support with wp_style_add_data()
+* Enhancement: Created assets/images/ and assets/fonts/ directories with documentation
+* Enhancement: Added comprehensive styling for footer widget areas
+* Improvement: Updated documentation to reflect actual implementation
+* Validation: All PHP files validated for syntax errors
+* Validation: Enhanced WordPress coding standards compliance
 
 = 1.0.0 - January 16, 2026 =
 * Initial release

@@ -1,6 +1,30 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
+		<?php if ( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_active_sidebar( 'footer-3' ) ) : ?>
+			<div class="footer-widgets">
+				<div class="footer-widgets-inner">
+					<?php if ( is_active_sidebar( 'footer-1' ) ) : ?>
+						<div class="footer-widget-area footer-widget-1">
+							<?php dynamic_sidebar( 'footer-1' ); ?>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( is_active_sidebar( 'footer-2' ) ) : ?>
+						<div class="footer-widget-area footer-widget-2">
+							<?php dynamic_sidebar( 'footer-2' ); ?>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( is_active_sidebar( 'footer-3' ) ) : ?>
+						<div class="footer-widget-area footer-widget-3">
+							<?php dynamic_sidebar( 'footer-3' ); ?>
+						</div>
+					<?php endif; ?>
+				</div><!-- .footer-widgets-inner -->
+			</div><!-- .footer-widgets -->
+		<?php endif; ?>
+
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'ai-premium-theme' ) ); ?>">
 				<?php

@@ -39,7 +39,7 @@
 			$ai_premium_theme_description = get_bloginfo( 'description', 'display' );
 			if ( $ai_premium_theme_description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $ai_premium_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<p class="site-description"><?php echo esc_html( $ai_premium_theme_description ); ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
