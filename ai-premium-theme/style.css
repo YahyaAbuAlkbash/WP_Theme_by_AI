@@ -3,15 +3,15 @@ Theme Name: AI Premium Theme
 Theme URI: https://github.com/YahyaAbuAlkbash/WP_Theme_by_AI
 Author: AI Development Team
 Author URI: https://github.com/YahyaAbuAlkbash
-Description: A modern, highly optimized WordPress theme built with best practices for 2026. Features include Full Site Editing support, block editor integration, responsive design, accessibility compliance, dark mode, and exceptional performance.
-Version: 1.0.1
+Description: A modern, highly optimized WordPress theme built with best practices for 2026. Features include Full Site Editing support, block editor integration, responsive design, accessibility compliance, dark mode, WooCommerce integration, SEO enhancements, and exceptional performance.
+Version: 1.0.2
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: ai-premium-theme
-Tags: blog, one-column, two-columns, right-sidebar, left-sidebar, custom-colors, custom-header, custom-background, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-site-editing, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-patterns, wide-blocks, accessibility-ready
+Tags: blog, one-column, two-columns, right-sidebar, left-sidebar, custom-colors, custom-header, custom-background, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-site-editing, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-patterns, wide-blocks, accessibility-ready, e-commerce
 
 AI Premium Theme, Copyright 2026
 AI Premium Theme is distributed under the terms of the GNU GPL v2 or later.
@@ -606,6 +606,30 @@ figcaption {
 
 .site-footer a:hover {
     color: #60a5fa;
+}
+
+/*--------------------------------------------------------------
+Breadcrumbs
+--------------------------------------------------------------*/
+.breadcrumbs {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+    color: #64748b;
+}
+
+.breadcrumbs a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs .current {
+    color: #1e293b;
+    font-weight: 600;
 }
 
 /*--------------------------------------------------------------

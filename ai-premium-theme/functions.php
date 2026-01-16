@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Theme version
  */
-define( 'AI_PREMIUM_THEME_VERSION', '1.0.1' );
+define( 'AI_PREMIUM_THEME_VERSION', '1.0.2' );
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -327,3 +327,15 @@ require get_template_directory() . '/inc/customizer.php';
  * Enqueue scripts additions.
  */
 require get_template_directory() . '/inc/enqueue-scripts.php';
+
+/**
+ * SEO enhancements.
+ */
+require get_template_directory() . '/inc/seo-enhancements.php';
+
+/**
+ * WooCommerce compatibility.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
