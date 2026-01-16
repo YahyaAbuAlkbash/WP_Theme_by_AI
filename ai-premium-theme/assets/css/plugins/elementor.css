@@ -1,0 +1,36 @@
+/**
+ * Elementor Integration Styles
+ * AI Premium Theme
+ */
+
+/* Elementor Section Compatibility */
+.elementor-section {
+	margin: 0;
+}
+
+/* Ensure theme colors work with Elementor */
+.elementor-widget-heading .elementor-heading-title {
+	font-family: inherit;
+}
+
+/* Button Compatibility */
+.elementor-button {
+	font-family: inherit;
+}
+
+/* Ensure proper spacing */
+.elementor-widget:not(:last-child) {
+	margin-bottom: 20px;
+}
+
+/* Theme-specific Elementor overrides */
+.elementor-kit-default {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+	.elementor-column {
+		width: 100% !important;
+	}
+}
