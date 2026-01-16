@@ -263,6 +263,9 @@ function ai_premium_theme_scripts() {
 	// Enqueue main stylesheet
 	wp_enqueue_style( 'ai-premium-theme-style', get_stylesheet_uri(), array(), AI_PREMIUM_THEME_VERSION );
 	
+	// Add RTL support
+	wp_style_add_data( 'ai-premium-theme-style', 'rtl', 'replace' );
+	
 	// Enqueue responsive styles
 	wp_enqueue_style( 'ai-premium-theme-responsive', get_template_directory_uri() . '/assets/css/responsive.css', array(), AI_PREMIUM_THEME_VERSION );
 	
@@ -291,8 +294,8 @@ add_action( 'wp_enqueue_scripts', 'ai_premium_theme_scripts' );
 function ai_premium_theme_resource_hints( $urls, $relation_type ) {
 	if ( wp_style_is( 'ai-premium-theme-fonts', 'queue' ) && 'preconnect' === $relation_type ) {
 		$urls[] = array(
-			'href' => 'https://fonts.gstatic.com',
-			'crossorigin',
+			'href'        => 'https://fonts.gstatic.com',
+			'crossorigin' => true,
 		);
 	}
 

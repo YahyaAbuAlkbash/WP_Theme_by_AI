@@ -547,7 +547,57 @@ figcaption {
     background-color: #1e293b;
     color: #e2e8f0;
     padding: 2rem 1rem;
+}
+
+.footer-widgets {
+    background-color: #0f172a;
+    padding: 3rem 1rem;
+}
+
+.footer-widgets-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-widget-area {
+    color: #cbd5e1;
+}
+
+.footer-widget-area .widget {
+    margin-bottom: 2rem;
+}
+
+.footer-widget-area .widget-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-widget-area a {
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+.footer-widget-area a:hover {
+    color: #60a5fa;
+}
+
+.footer-widget-area ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-widget-area ul li {
+    margin-bottom: 0.5rem;
+}
+
+.site-info {
     text-align: center;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid #334155;
 }
 
 .site-footer a {
