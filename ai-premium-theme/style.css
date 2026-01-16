@@ -1017,3 +1017,276 @@ Sidebar Styles
         gap: 3rem;
     }
 }
+
+/*--------------------------------------------------------------
+Comments Section
+--------------------------------------------------------------*/
+.comments-area {
+    margin-top: 4rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 16px;
+    border: 2px solid #e2e8f0;
+}
+
+.comments-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #1e293b 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.comment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-body {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.comment-body:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.comment-author {
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.comment-meta {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+}
+
+.comment-content {
+    line-height: 1.7;
+    color: #475569;
+}
+
+.reply {
+    margin-top: 1rem;
+}
+
+.reply a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.reply a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.comment-respond {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+}
+
+.comment-reply-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.comment-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+/*--------------------------------------------------------------
+Page Links (Pagination within posts)
+--------------------------------------------------------------*/
+.page-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.page-links a,
+.page-links > span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.page-links a:hover {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.page-links > .current {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    border-color: transparent;
+}
+
+/*--------------------------------------------------------------
+Tags and Categories
+--------------------------------------------------------------*/
+.tags-links,
+.cat-links {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.tags-links a,
+.cat-links a {
+    display: inline-block;
+    padding: 0.375rem 1rem;
+    background: #f1f5f9;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.tags-links a:hover,
+.cat-links a:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/*--------------------------------------------------------------
+Block Editor Styles
+--------------------------------------------------------------*/
+.wp-block-quote {
+    border-left: 4px solid #2563eb;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #475569;
+}
+
+.wp-block-quote cite {
+    font-style: normal;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.wp-block-pullquote {
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.wp-block-button__link {
+    padding: 0.875rem 1.75rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.wp-block-button__link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+/*--------------------------------------------------------------
+Utility Classes
+--------------------------------------------------------------*/
+.gradient-text {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+}
+
+/*--------------------------------------------------------------
+Smooth Scrolling
+--------------------------------------------------------------*/
+html {
+    scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+Selection Color
+--------------------------------------------------------------*/
+::selection {
+    background: #2563eb;
+    color: white;
+}
+
+::-moz-selection {
+    background: #2563eb;
+    color: white;
+}
