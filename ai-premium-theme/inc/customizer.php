@@ -480,7 +480,15 @@ add_action( 'customize_register', 'ai_premium_theme_customize_register' );
  * @return string
  */
 function ai_premium_theme_sanitize_select( $input, $setting ) {
-	$choices = $setting->manager->get_control( $setting->id )->choices;
+	// Get the control object and ensure it exists
+	$control = $setting->manager->get_control( $setting->id );
+	
+	// Return default if control doesn't exist or has no choices
+	if ( ! $control || ! isset( $control->choices ) ) {
+		return $setting->default;
+	}
+	
+	$choices = $control->choices;
 	return ( array_key_exists( $input, $choices ) ? $input : $setting->default );
 }
 

@@ -150,7 +150,7 @@ function ai_premium_theme_google_fonts() {
 
 	$fonts_to_load = array();
 
-	// Google Fonts mapping
+	// Google Fonts mapping - validated font slugs only
 	$google_fonts_map = array(
 		'roboto'     => 'Roboto:300,400,500,700',
 		'open-sans'  => 'Open+Sans:300,400,600,700',
@@ -159,6 +159,10 @@ function ai_premium_theme_google_fonts() {
 		'poppins'    => 'Poppins:300,400,500,600,700',
 		'playfair'   => 'Playfair+Display:400,500,600,700',
 	);
+
+	// Sanitize font selections and only add validated fonts
+	$body_font    = sanitize_key( $body_font );
+	$heading_font = sanitize_key( $heading_font );
 
 	if ( 'system' !== $body_font && isset( $google_fonts_map[ $body_font ] ) ) {
 		$fonts_to_load[] = $google_fonts_map[ $body_font ];
@@ -169,6 +173,7 @@ function ai_premium_theme_google_fonts() {
 	}
 
 	if ( ! empty( $fonts_to_load ) ) {
+		// Fonts are from validated whitelist, safe to construct URL
 		$fonts_url = 'https://fonts.googleapis.com/css2?family=' . implode( '&family=', $fonts_to_load ) . '&display=swap';
 		wp_enqueue_style( 'ai-premium-theme-google-fonts', $fonts_url, array(), null );
 	}
