@@ -5,7 +5,7 @@ Tags: blog, one-column, two-columns, right-sidebar, left-sidebar, custom-colors,
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,19 @@ Yes! The theme follows WCAG 2.1 AA accessibility guidelines with proper semantic
 Absolutely! AI Premium Theme is perfect for blogs, portfolios, business sites, and more.
 
 == Changelog ==
+
+= 1.0.3 - January 16, 2026 =
+* Added: Advanced Theme Customizer with 40+ options (header layouts, typography, blog settings, footer customization)
+* Added: Custom Post Types (Portfolio, Team Members, Services, Testimonials)
+* Added: Demo Content Importer with 3 pre-built demo sites (Business, Blog, WooCommerce Shop)
+* Added: Plugin Compatibility System for Contact Form 7, Gravity Forms, WPForms, Elementor, WPML, Polylang
+* Added: Child Theme Package with documentation
+* Enhanced: Typography controls with Google Fonts integration
+* Enhanced: Header with 3 layout styles and sticky header option
+* Enhanced: Blog with 4 layout options (List, Grid 2-col, Grid 3-col, Masonry)
+* Enhanced: Social Media Integration (7 platform links)
+* Compliance: Fixed tag issue (removed 'e-commerce' tag per WordPress.org requirements)
+* Compliance: Version consistency across all files
 
 = 1.0.2 - January 16, 2026 =
 * Added: Screenshot.png (1200x900px) for theme directories
